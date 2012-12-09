@@ -1,0 +1,107 @@
+/*
+This file is part of Foca Compiler.
+
+Foca Compiler is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Foca Compiler is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foca Compiler.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/***************************************************************************************
+ * Projeto: Compilador - Linguagem FOCA                                                *
+ * Autores: Bernardo de Araujo Mesquita Chaves                                         *
+ *          Claudio Sergio Forain Junior                                               *
+ *          Roque Elias Assumpcao Pinel                                                *
+ * Periodo: 2007-01 (DCC/UFRJ)                                                         *
+ ***************************************************************************************/
+
+/*
+	Programa teste da linguagem FOCA
+	
+	Para executar digite: make rodar
+*/
+
+<GLOBALS>
+int a;
+
+<FUNCTIONS>
+
+void inverte_linha (int vetor[][])
+{
+	for(int i = 0; i < 2; i++)
+	{
+		for(int j = 2; j >= 0; j--)
+			print(vetor[i][j] . " ");
+		println("");
+	}
+}
+
+main (void)
+{
+	int b, vetor[2][3];
+	bool sinal;
+	string linha;
+	
+	a = 0;
+	b = 0;
+	
+	sinal = true;
+	linha = "";
+	
+	while(sinal) // loop principal
+	{
+		print("Entre como uma opcao (ajuda): ");
+		scan(linha);
+		
+		switch(linha)
+		{
+			case "ajuda" :
+				println("Digite:\n \"entrada1\" para dar valor a \"a\" e \"b\".\n \"saida1\" para imprimir os valores.");
+				println(" \"entrada2\" para dar valor ao vetor.\n \"saida2\" para imprimir o vetor.");
+				println(" \"trocar\" para trocas os valores.\n \"debug\" para imprimir todas a variaveis.");
+				println(" \"sair\" para sair do programa.");
+				break;
+			case "entrada1" :
+				print("Valor de \"a\": ");
+				scan(a);
+				print("Valor de \"b\": ");
+				scan(b);
+				break;
+			case "saida1" :
+				println("\"a\": " . a . " - \"b\": " . b);
+				break;
+			case "entrada2" :
+				for(int i = 0; i < 2; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						print("Valor de \"vetor[" . i . "][" . j . "]\": ");
+						scan(vetor[i][j]);
+					}
+				}
+				break;
+			case "saida2" :
+				inverte_linha(vetor);
+				break;
+			case "trocar" :
+				swap(a, b);
+				break;
+			case "debug" :
+				debug();
+				break;
+			case "sair" :
+				sinal = false;
+				break;
+			default :
+				println("Opcao invalida.");
+		}
+	}
+}
