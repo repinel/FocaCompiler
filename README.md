@@ -1,9 +1,7 @@
 Foca Compiler
 ============
 
-The compiler for the Foca Language. It was developed by Bernardo de Araujo Mesquita Chaves,
-Claudio Sergio Forain Junior and Roque Elias Assumpcao Pinel as project for the Cocompilers
-course from the DCC/UFRJ (Brazil).
+The compiler for the Foca Language. It was developed for the Compilers course from the DCC/UFRJ (Brazil).
 
 Licensed under the GPL, Version 3.
 
